@@ -1,6 +1,7 @@
 # Stock search-front
 
-Stock application frontend created in Angular 7. 
+Stock application frontend created in Angular 7.
+Allows products search by name.
 
 ## Development server
 
