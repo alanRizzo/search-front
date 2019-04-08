@@ -1,0 +1,33 @@
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+  <button class="btn btn-outline-primary" data-toggle="modal" data-target="#addModal">Agregar</button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar"
+    aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navBar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      </li>
+    </ul>
+    <form [formGroup]="searchForm" class="form-inline my-2 my-md-0">
+      <input formControlName="search" class="form-control" type="text" (keyup)="onSearch()" placeholder="Buscar"
+        aria-label="Buscar">
+    </form>
+    <span class="navbar-text">
+      <a class="nav-link" href="#" (click)=onLogout()>
+        <i class="fas fa-power-off"></i>
+        <span class="sr-only">(current)</span>
+      </a>
+    </span>
+  </div>
+</nav>
+
+<app-stock-add-item></app-stock-add-item>
+
+<div class="container">
+  <div class="row">
+    <app-stock-item [item]="item" *ngFor="let item of items"></app-stock-item>
+  </div>
+</div>

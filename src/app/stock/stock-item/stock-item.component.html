@@ -1,0 +1,26 @@
+<div class="block">
+  <div class="top">
+    <p class="category">{{ item.categoria_nombre }}</p>
+  </div>
+  <div class="bottom">
+    <div class="name">{{ item.nombre }}</div>
+    <div class="code">
+      {{ item.codigo }}
+      <br>
+      {{ item.stock }} unidades
+    </div>
+    <div class="price">{{ item.precio | currency }}</div>
+  </div>
+  <div class="buttons">
+    <button type="button" (click)="onSelectedItem(item)" class="btn btn-link float-left" data-toggle="modal"
+      data-target="#editModal">
+      <i class="far fa-edit"></i>
+    </button>
+    <button type="button" (click)="onSelectedItem(item)" class="btn btn-link float-right" data-toggle="modal"
+      data-target="#deleteModal">
+      <i class="far fa-trash-alt"></i>
+    </button>
+  </div>
+</div>
+
+<app-stock-edit-item *ngIf="selectedItem" [selectedItem]='selectedItem'></app-stock-edit-item>

@@ -1,0 +1,64 @@
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar item</h5>
+        <button type="reset" class="close" (click)="onAddCancel()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm">
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label for="categoria">Categoría</label>
+              <select formControlName="categoria" class="custom-select">
+                <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.nombre }}</option>
+              </select>
+              <div *ngIf="f.categoria.errors">
+                <small *ngIf="f.categoria.errors.required" class="form-text text-muted">
+                  Campo requerido
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-md-7">
+              <label for="nombre">Nombre</label>
+              <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+              <div *ngIf="f.nombre.errors">
+                <small *ngIf="f.nombre.errors.required" class="form-text text-muted">
+                  Campo requerido
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="code">Código</label>
+              <input formControlName="codigo" type="text" class="form-control" placeholder="Código">
+              <div *ngIf="f.codigo.errors">
+                <small *ngIf="f.codigo.errors.required" class="form-text text-muted">
+                  Campo requerido
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="code">Stock</label>
+              <input formControlName="stock" type="text" class="form-control" placeholder="Stock">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="code">Precio</label>
+              <input formControlName="precio" type="text" class="form-control" placeholder="Precio">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="reset" (click)="onAddCancel()" class="btn btn-outline-secondary"
+          data-dismiss="modal">Cancelar</button>
+        <button type="button" [disabled]="!addForm.valid" (click)="onAdd(addForm.value)" data-dismiss="modal"
+          class="btn btn-outline-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading" class="text-center">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
+    <img class="mb-4" src="../../assets/login.svg" alt="" width="72" height="72">
+    <i class="fa fa-sign-in" aria-hidden="true"></i>
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input 
+      type="text" 
+      id="inputUsername" 
+      class="form-control" 
+      placeholder="Username" 
+      formControlName="username">
+      <div *ngIf="submitted && f.username.errors">
+        <small *ngIf="f.password.errors.required" class="form-text text-muted">
+          Username es requerido
+        </small>
+      </div>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input 
+      type="password" 
+      id="inputPassword"
+      class="form-control" 
+      placeholder="Password" 
+      formControlName="password">
+      <div *ngIf="submitted && f.password.errors">
+        <small *ngIf="f.password.errors.required" class="form-text text-muted">
+          Password es requerido
+        </small>
+      </div>
+    <button [disabled]="loading" class="btn btn-outline-primary btn-block" type="submit">Sign in</button>
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+        <small>{{ error }}</small>
+    </div>
+  </form>
+</div>
